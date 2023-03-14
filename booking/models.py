@@ -15,5 +15,5 @@ class Booking(models.Model):
             Q(date_started__gte=self.date_started) & Q(date_end__lte=self.date_end)
         )
         if len(bookings):
-            raise ValidationError(f'На такие даты уже есть номера {", ".join(bookings)}')
+            raise ValidationError(f'На такие даты номера заняты {", ".join(bookings)}')
         super(Booking, self).save(*args, **kwargs)
