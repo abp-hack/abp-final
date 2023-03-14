@@ -16,7 +16,6 @@ class Booking(models.Model):
         verbose_name_plural = 'Бронирования'
 
     def clean(self):
-        print(self.date_end)
         if self.date_end is None and self.date_len is None:
             raise ValidationError("Укажите конечную дату либо количество ночей")
         if self.date_end is not None:
