@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'application'
+    'application',
+    'booking'
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
