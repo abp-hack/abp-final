@@ -63,4 +63,3 @@ class Booking(models.Model):
     
     def __str__(self):
         return f'{self.date_started.strftime("%m.%d.%Y")} - {self.date_end.strftime("%m.%d.%Y")}'
-        
