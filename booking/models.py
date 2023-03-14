@@ -8,7 +8,7 @@ class Booking(models.Model):
     date_started = models.DateField('Дата начала', null=True, blank=True)
     date_end = models.DateField('Дата окончания', null=True, blank=True)
     date_len = models.PositiveIntegerField('Сколько ночей', blank=True, null=True)
-    number = models.ForeignKey('Номер отеля', HotelNumber)
+    number = models.ForeignKey(HotelNumber, verbose_name='Номер отеля', on_delete=models.CASCADE)
 
     def create(self, *args, **kwargs):
         bookings = Booking.objects.filter(
