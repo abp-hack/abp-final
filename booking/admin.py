@@ -7,4 +7,4 @@ from django.core.exceptions import ValidationError
 class BookingAdmin(admin.ModelAdmin):
     class Meta:
         model = Booking
-    fields = ('date_started', 'date_end', 'date_len')
+    fields = ('date_started', 'date_end', 'date_len', 'hotel')

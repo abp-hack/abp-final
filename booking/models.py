@@ -1,5 +1,5 @@
 from django.db import models
-from application.models import HotelNumber
+from application.models import HotelNumber, Hotel
 from django.db.models import Q
 from django.core.exceptions import ValidationError
 import datetime
@@ -10,6 +10,7 @@ class Booking(models.Model):
     date_end = models.DateField('Дата окончания', null=True, blank=True)
     date_len = models.PositiveIntegerField('Сколько ночей', blank=True, null=True)
     number = models.ForeignKey(HotelNumber, verbose_name='Номер отеля', on_delete=models.CASCADE, blank=True, null=True)
+    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, verbose_name='Отель', null=True)
 
     class Meta:
         verbose_name = 'Бронирование'
@@ -23,7 +24,7 @@ class Booking(models.Model):
         if self.date_len:
             self.date_end = self.date_started + datetime.timedelta(days=self.date_len)
 
-        numbers = HotelNumber.objects.all()
+        numbers = HotelNumber.objects.filter(hotel=self.hotel)
 
         bookings = Booking.objects.filter(
             (
